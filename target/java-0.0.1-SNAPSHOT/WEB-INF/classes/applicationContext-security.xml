@@ -17,7 +17,7 @@
  	 <security:debug/> -->
  	
 	<!-- REST Spring Security Configuration --> 
-	<security:global-method-security pre-post-annotations="enabled" jsr250-annotations="enabled" secured-annotations="enabled" access-decision-manager-ref="accessDecisionManager"/>
+	
 	<security:http entry-point-ref="authenticationEntryPoint" create-session="stateless" use-expressions="true">
 		<!-- Allow the OPTIONS method used by CORS requests to bypass security filters -->
 		<security:intercept-url pattern="/**" method="OPTIONS" requires-channel="https" access="permitAll"/>
@@ -39,66 +39,14 @@
 		<security:authentication-provider
 			ref="preauthAuthProvider" />
 	</security:authentication-manager>
-
-	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
-		<property name="allowIfAllAbstainDecisions" value="true" />
-		<property name="decisionVoters">
-			<list>
-				<bean class="org.springframework.security.access.vote.RoleVoter">
-					<!-- Reset the role prefix to "", default is ROLE_ -->
-					<property name="rolePrefix" value="" />
-				</bean>
-				<!--
-					The authenticated voter grant access if e.g. IS_AUTHENTICATED_FULLY
-					is an attribute
-				-->
-				<bean class="org.springframework.security.access.vote.AuthenticatedVoter" />
-			</list>
-
-		</property>
-	</bean>
-
-	<bean id="openssoFilter"
-		class="org.aamc.commons.spring.security.opensso.OpenSSOPreAuthenticatedProcessingFilter">
-		<property name="authenticationManager" ref="authenticationManager" />
-		<property name="authenticationDetailsSource" ref="openSSOAuthenticationDetailsSource" />
-		<property name="openSSORestOperations" ref="openSSORestOperations" />
-	</bean>
-
-	<bean id="openSSOAuthenticationDetailsSource"
-		class="org.aamc.commons.spring.security.opensso.OpenSSOAuthenticationDetailsSource">
-	</bean>
-
+		
 	<bean id="preauthAuthProvider"
 		class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
 		<property name="preAuthenticatedUserDetailsService" ref="restClientUserDetailsService" />
 	</bean>
-	
-	<bean id="restClientUserDetailsService"
-		class="org.aamc.commons.service.RestClientUserDetailsService">
-		<property name="openSSORestOperations" ref="openSSORestOperations" />
-		<property name="aamcServiceUrlPrefix" ref="servicesUrl" />
-		<property name="userApplication" ref="userApplication" />
-		<property name="restTemplate" ref="restTemplate" />
-	</bean>
 
-	<!-- All secured data services return a 401 when accessed without security credentials -->
-	<bean id="authenticationEntryPoint" class="org.aamc.commons.spring.security.opensso.HTTP401PreAuthenticatedProcessingFilterEntryPoint"/>
-	
-	<bean id="logoutHandler"
-		class="org.aamc.commons.spring.security.opensso.OpenSSOLogoutHandler">
-		<constructor-arg ref="ssoLoginUrl" />
-		<constructor-arg value="/home/login/logout" />
-	</bean>
-
-	<bean id="openSSORestOperations" class="org.aamc.commons.security.opensso.OpenSSORestOperations">
-		<constructor-arg index="0" ref="openSsoUrl" />
-		<property name="httpExecutor" ref="httpExecutor" />
-	</bean>
 	<bean id="userApplication" class="java.lang.String">
 		<constructor-arg type="java.lang.String" value="java" />
 	</bean>
-	
-	<bean id="httpExecutor" class="org.aamc.commons.httpclient.HttpExecutorHttpClientImpl" />
 
 </beans>

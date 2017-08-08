@@ -37,7 +37,7 @@ public class OrderController {
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public void saveOrder(@RequestBody Order order){
-		log.debug("Saving new order");
+		//log.debug("Saving new order");
 		orderService.createOrder(order);		
 	}
 	
@@ -49,7 +49,7 @@ public class OrderController {
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public Order getOrderById(@PathVariable Long id){
-		log.debug("Loading order by id");
+		//log.debug("Loading order by id");
 		return orderService.getOrder(id);
 	}
 	

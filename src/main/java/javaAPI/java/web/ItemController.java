@@ -23,7 +23,7 @@ public class ItemController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public Collection<Item> getItems(@PageableDefault(page = 0, value = 5)Pageable pageable){
-		log.debug("Loading all items");
+		//log.debug("Loading all items");
 		return itemService.getItems(pageable);
 	}
 }

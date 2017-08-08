@@ -14,13 +14,10 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 @Entity
 @Data
-@JsonIgnoreProperties(ignoreUnknown=true)
+//@JsonIgnoreProperties(ignoreUnknown=true)
 public class Item implements Serializable{
 	
 	private static final long serialVersionUID = 4630234518328168345L;
@@ -34,11 +31,11 @@ public class Item implements Serializable{
 	
 	private float price;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@CreatedDate
 	public Date createDate;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@LastModifiedDate
 	public Date lastModified;
 

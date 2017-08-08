@@ -14,7 +14,7 @@
 	
 	<!-- Package for repository loading -->
 	<jpa:repositories base-package="javaAPI.java.repository" />
-	 <bean id="jpaAuditInterceptor" class="org.aamc.commons.audit.JpaAuditInterceptor"/>
+	 <!-- <bean id="jpaAuditInterceptor" class="org.aamc.commons.audit.JpaAuditInterceptor"/> -->
  	<jpa:auditing auditor-aware-ref="jpaAuditInterceptor"/> 
   	
   	<beans profile="tomcat">   
@@ -38,9 +38,9 @@
 		</bean>
 	</beans>
 	
-  <beans profile="WebSphere"> 
+  <!-- <beans profile="WebSphere"> 
 	  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-	  	<property name="jtaDataSource" ref="dataSource"/>  <!-- Note jpaDataSource instead of regular data source -->
+	  	<property name="jtaDataSource" ref="dataSource"/>  Note jpaDataSource instead of regular data source
 	  	<property name="jpaVendorAdapter">
 	         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 	 	       <property name="database" value="HSQL"/>
@@ -55,13 +55,13 @@
 	    		<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 	    		<prop key="jadira.usertype.autoRegisterUserTypes">true</prop>
 	    		 
-                <!-- For bean managed transactions, these properties allow our jpa txManager to work with WESB's JTA transactions. -->
+                For bean managed transactions, these properties allow our jpa txManager to work with WESB's JTA transactions.
                	<prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop>
         		<prop key="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.WebSphereExtendedJTATransactionLookup</prop>	    		
 	    	</props>
 	  	</property>
 	  </bean>
-  </beans>  
+  </beans>   -->
   
   
 </beans>

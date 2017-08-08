@@ -3,12 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>aamc-parent</artifactId>
-		<groupId>org.aamc</groupId>
-		<version>2.1</version>
-	</parent>
-
 	<artifactId>java</artifactId>
 
 	<groupId>javaAPI</groupId>
@@ -18,17 +12,13 @@
 
 	<developers>
 		<developer>
-			<name>Josh Swann</name>
-			<email>jswann@aamc.org</email>
-		</developer>
-		<developer>
-			<name>Adam Hisley</name>
-			<email>ahisley@aamc.org</email>
+			<name>Santosh Narayankar</name>
+			<email>santoshnarayankar@gmail.com</email>
 		</developer>
 	</developers>
 	<organization>
-		<name>AAMC</name>
-		<url>http://www.aamc.org</url>
+		<name>FoodViolators</name>
+		<url>http://www.foodviolators.com</url>
 	</organization>
 
 	<properties>
@@ -38,19 +28,12 @@
 	</properties>
 
 	<dependencies>
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-			<groupId>org.aamc.commons</groupId>
-			<artifactId>aamc-commons</artifactId>
-			<version>3.3-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.6</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc5</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -58,6 +41,11 @@
 			<scope>compile</scope>
 		</dependency>
 
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
 		<!-- Used to support an embedded database for the archetype and unit tests. 
 			HSQLDB can be removed from your projected if you don't need an embedded database. -->
 		<dependency>
@@ -69,29 +57,25 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.25</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.9.RELEASE</version>
 			<exclusions>
 				<!--Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
@@ -105,18 +89,22 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
+			<version>4.2.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
+			<version>4.2.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-remoting</artifactId>
+			  <version>4.2.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
+			 <version>4.2.3.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -128,19 +116,16 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
+			    <version>4.3.10.RELEASE</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jadira.usertype</groupId>
-			<artifactId>usertype.core</artifactId>
-			<version>3.1.0.GA</version>
-		</dependency>
-
+	
 
 		<!-- TBD: review -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
+			  <version>1.5.4</version>
 		</dependency>
 
 		<!-- JAXB: Spring mvc will automatically support type/xml requests when 
@@ -148,16 +133,19 @@
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
+			 <version>2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
+			 <version>2.1</version>
 		</dependency>
 
 		<!-- Swagger mvc for automatic REST documentation -->
 		<dependency>
 			<groupId>com.mangofactory</groupId>
 			<artifactId>swagger-springmvc</artifactId>
+			<version>1.0.2</version>
 			<exclusions>
 				<!-- Using cglib-nodep -->
 				<exclusion>
@@ -171,17 +159,20 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			 <version>1.16.18</version>
 		</dependency>
 
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
+			<version>4.3.9.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -189,23 +180,18 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.4.0.GA</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
+			 <version>6.0.1.Final</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
-
-		<!-- Commons database for use when creating tomcat datasource on local 
-			machines -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.2.2</version>
+			   <version>1.4</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>

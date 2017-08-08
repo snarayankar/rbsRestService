@@ -20,7 +20,8 @@
 			<property name="dataSource" ref="dataSource"/>
 			<property name="jpaVendorAdapter">
 		      	<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-		       		<property name="database" value="ORACLE"/> 
+		       		<!-- <property name="database" value="ORACLE"/>  -->
+		       		<property name="database" value="MySQL" />
 		  		</bean>
 		    </property>
 			<property name="packagesToScan" value="javaAPI.java.domain"/>
@@ -35,9 +36,9 @@
 		</bean>
 	</beans>
 	
-  <beans profile="WebSphere"> 
+  <!-- <beans profile="WebSphere"> 
 	  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-	  	<property name="jtaDataSource" ref="dataSource"/>  <!-- Note jpaDataSource instead of regular data source -->
+	  	<property name="jtaDataSource" ref="dataSource"/>  Note jpaDataSource instead of regular data source
 	  	<property name="jpaVendorAdapter">
 	         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 	 	       <property name="database" value="ORACLE"/>
@@ -51,12 +52,12 @@
 	    		<prop key="hibernate.show_sql">false</prop>
 	    		<prop key="hibernate.format_sql">false</prop>
 	    		<prop key="jadira.usertype.autoRegisterUserTypes">true</prop> 
-                <!-- For bean managed transactions, this property allow our jpa txManager to work with WESB's JTA transactions. -->
+                For bean managed transactions, this property allow our jpa txManager to work with WESB's JTA transactions.
         		<prop key="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.WebSphereExtendedJTATransactionLookup</prop>	    		
 	    	</props>
 	  	</property>
 	  </bean>
-  </beans>  
+  </beans>   -->
   
   
 </beans>

@@ -16,7 +16,7 @@
 	<context:component-scan base-package="javaAPI.java.web" />
 	
 	<!-- Configures the AAMC Service Exception handler -->
-	<bean class="org.aamc.commons.service.exception.AamcExceptionController"/>
+	<!-- <bean class="org.aamc.commons.service.exception.AamcExceptionController"/> -->
 	
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
@@ -24,15 +24,10 @@
 		</mvc:argument-resolvers>
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="objectMapper">
+                <!-- <property name="objectMapper">
                     <bean class="org.aamc.commons.jackson.HibernateAwareObjectMapper" />
-                </property>
+                </property> -->
             </bean>
 		</mvc:message-converters>
-	</mvc:annotation-driven>
-	
-	<!-- Swagger Configuration -->
-	<util:properties id="swagger" location="classpath:swagger.properties"/>    
-    <bean class="org.aamc.commons.config.swagger.CustomizableSwaggerConfig" />
-    
+	</mvc:annotation-driven>    
 </beans>

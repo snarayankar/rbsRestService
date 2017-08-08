@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Transactional
 	public Order getOrder(Long id) {
-		log.debug("Inside get order");
+		//log.debug("Inside get order");
 		return orderRepo.findOne(id);
 	}
 
