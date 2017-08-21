@@ -14,18 +14,8 @@
 						http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<!-- <context:component-scan base-package="javaAPI.java" /> -->
+		<context:component-scan base-package="javaAPI.java" />
 	
-	<!-- JNDI AAMC Env variable -->
-	<!-- <jee:jndi-lookup id="aamcEnv" jndi-name="cell/persistent/misc/aamcEnv" default-value="development" /> -->
-	<!-- JNDI services URL -->
-	<!-- <jee:jndi-lookup id="servicesUrl" jndi-name="cell/persistent/misc/servicesUrl" default-value="http://services2.development.aamc.org"/> -->
-	<!-- JNDI SSO Login App URL -->
-	<!-- <jee:jndi-lookup id="ssoLoginUrl" jndi-name="cell/persistent/misc/ssoLoginUrl" default-value="https://services.development.aamc.org/30/ssoLogin"/> -->
-	<!-- JNDI OpenSSO Base URL -->
-	<!-- <jee:jndi-lookup id="openSsoUrl" jndi-name="cell/persistent/misc/openSsoUrl" default-value="http://am.development.aamc.org/openam/identity"/> -->
-
-	
-	<!-- <bean id="aamcUserDetailsProvider"	class="org.aamc.commons.security.provider.SpringContextAamcUserDetailsProviderImpl"/> -->
 	
 	<bean id="httpRequestFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory"/>
 	

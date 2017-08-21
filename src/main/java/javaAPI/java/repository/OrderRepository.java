@@ -20,10 +20,10 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-	@Query("select distinct o from Order o left join fetch o.items where o.name = ?1")
-	public List<Order> findOrdersByName(String name);
-
-	@Query("select o from Order o left join fetch o.items where o.id = ?1")
-	public Order findOne(Long id);
+//	@Query("select distinct o from Order o left join fetch o.items where o.name = ?1")
+//	public List<Order> findOrdersByName(String name);
+//
+//	@Query("select o from Order o left join fetch o.items where o.id = ?1")
+//	public Order findOne(Long id);
 
 }

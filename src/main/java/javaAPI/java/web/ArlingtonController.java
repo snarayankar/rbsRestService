@@ -1,29 +1,27 @@
 package javaAPI.java.web;
 
-import java.util.Collection;
+import java.awt.print.Pageable;
 
-import lombok.extern.log4j.Log4j;
-
-import javaAPI.java.domain.Item;
-import javaAPI.java.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javaAPI.java.service.ArlingtonVaService;
+import lombok.extern.log4j.Log4j;
+
 @Log4j
 @RestController
-@RequestMapping("/items")
-public class ItemController {
-
-//	@Autowired
-//	ItemService itemService;
+@RequestMapping("/arlington")
+public class ArlingtonController {
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@Autowired
+	ArlingtonVaService arlingtonVAService;
+	
+	@RequestMapping(value="/" , method=RequestMethod.GET)
 	public boolean getItems(@PageableDefault(page = 0, value = 5)Pageable pageable){
 		//log.debug("Loading all items");
-		return true;
+		return arlingtonVAService.getItems();
 	}
 }

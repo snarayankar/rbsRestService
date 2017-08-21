@@ -9,55 +9,41 @@
            http://www.springframework.org/schema/data/jpa 
            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	
-	<!--  Hibernate configured for a tomcat/websphere deployment using ORACLE db -->
-	
 	<!-- Package for repository loading -->
 	<jpa:repositories base-package="javaAPI.java.repository" />
-  	 <bean id="jpaAuditInterceptor" class="org.aamc.commons.audit.JpaAuditInterceptor"/>
- 	<jpa:auditing auditor-aware-ref="jpaAuditInterceptor"/> 
+  	 
+  	 
+  	 <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="true"/>
+        <property name="database" value="MYSQL"/>
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+        <!-- spring based scanning for entity classes>-->
+        <property name="packagesToScan" value="avaAPI.java.domain"/>
+    </bean>
+    
   	<beans profile="tomcat">   
 		<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 			<property name="dataSource" ref="dataSource"/>
 			<property name="jpaVendorAdapter">
 		      	<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		       		<!-- <property name="database" value="ORACLE"/>  -->
-		       		<property name="database" value="MySQL" />
+		       		<property name="database" value="MYSQL" />
 		  		</bean>
 		    </property>
 			<property name="packagesToScan" value="javaAPI.java.domain"/>
 			<property name="jpaProperties">
 				<props>
-		  		<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-		  		<prop key="hibernate.show_sql">false</prop>
+		  		<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		  		<prop key="hibernate.show_sql">true</prop>
 		  		<prop key="hibernate.format_sql">false</prop>	
-		  		<prop key="jadira.usertype.autoRegisterUserTypes">true</prop> 	  		
+		  		<prop key="jadira.usertype.autoRegisterUserTypes">false</prop> 	  		
 		  	</props>
 			</property>
 		</bean>
 	</beans>
-	
-  <!-- <beans profile="WebSphere"> 
-	  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-	  	<property name="jtaDataSource" ref="dataSource"/>  Note jpaDataSource instead of regular data source
-	  	<property name="jpaVendorAdapter">
-	         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-	 	       <property name="database" value="ORACLE"/>
-	    	</bean>
-	      </property>
-	  	<property name="packagesToScan" value="javaAPI.java.domain"/>
-	  	<property name="jpaProperties">
-	  		<props>
-
-	    		<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-	    		<prop key="hibernate.show_sql">false</prop>
-	    		<prop key="hibernate.format_sql">false</prop>
-	    		<prop key="jadira.usertype.autoRegisterUserTypes">true</prop> 
-                For bean managed transactions, this property allow our jpa txManager to work with WESB's JTA transactions.
-        		<prop key="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.WebSphereExtendedJTATransactionLookup</prop>	    		
-	    	</props>
-	  	</property>
-	  </bean>
-  </beans>   -->
-  
-  
 </beans>

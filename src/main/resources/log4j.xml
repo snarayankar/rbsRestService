@@ -9,7 +9,7 @@
 	</appender>
 	
 	<appender name="logFile" class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="/opt/javalogs/applogs/java-${APP_SERVER}.log"/>
+		<param name="File" value="/AngularJs/JavaApps/java.log"/>
 		<param name="Append" value="true"/>
 		<param name="MaxFileSize" value="2MB"/>
 		<param name="MaxBackupIndex" value="3"/>

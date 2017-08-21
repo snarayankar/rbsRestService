@@ -13,20 +13,14 @@
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<context:component-scan base-package="javaAPI.java.web" />
-	
-	<!-- Configures the AAMC Service Exception handler -->
-	<!-- <bean class="org.aamc.commons.service.exception.AamcExceptionController"/> -->
-	
+	<context:component-scan base-package="javaAPI.java.web" />	
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
 			<bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver"/>
 		</mvc:argument-resolvers>
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <!-- <property name="objectMapper">
-                    <bean class="org.aamc.commons.jackson.HibernateAwareObjectMapper" />
-                </property> -->
+         
             </bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>    

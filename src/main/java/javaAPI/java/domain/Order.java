@@ -24,7 +24,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 @Entity
 @Table(name="ORDERTABLE")
 @Data
-//@JsonIgnoreProperties(ignoreUnknown=true)
 public class Order implements Serializable{
 	
 	private static final long serialVersionUID = -1103863992260274071L;

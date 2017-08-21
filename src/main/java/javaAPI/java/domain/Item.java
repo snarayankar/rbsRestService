@@ -17,7 +17,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Data
-//@JsonIgnoreProperties(ignoreUnknown=true)
 public class Item implements Serializable{
 	
 	private static final long serialVersionUID = 4630234518328168345L;
